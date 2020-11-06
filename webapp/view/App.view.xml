@@ -1,0 +1,126 @@
+<mvc:View controllerName="pokedexPokedex.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:smartList="sap.ui.comp.smartlist" displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:uxap="sap.uxap" xmlns:l="sap.ui.layout">
+	<SplitApp id="SplitApp" initialDetail="detail" initialMaster="master">
+		<masterPages>
+			<Page id="master" title="Pokémons" backgroundDesign="Solid" class="sapUiStdPage" showNavButton="false">
+				<List id="pokemonList" headerText="Pokémons" items="{path:'modelPokemonList>/results'}" press="onPokemonPress">
+					<items>
+						<StandardListItem title="{modelPokemonList>name}" type="Navigation" press=".onPokemonPress"/>
+					</items>
+				</List>
+			</Page>
+		</masterPages>
+		<detailPages>
+			<Page id="detail" title="{modelPokemon>/name}" backgroundDesign="Solid" class="sapUiStdPage">
+				<l:HorizontalLayout class="sapUiContentPadding">
+					<Image class="sapUiSmallMarginTop sapUiSmallMarginBottom" src="{modelPokemon>/sprites/other/dream_world/front_default}" height = "150px"/>
+					<VBox>
+						<form:Form id="Informations" editable="false">
+							<form:layout>
+								<!--<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"-->
+								<!--	emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>-->
+									<form:ResponsiveGridLayout />
+							</form:layout>
+							<form:formContainers>
+								<form:FormContainer>
+									<form:formElements>
+										<form:FormElement label="ID">
+											<form:fields>
+												<Text text="{modelPokemon>/id}"/>
+											</form:fields>
+										</form:FormElement>
+										<form:FormElement label="Height">
+											<form:fields>
+												<Text text="{modelPokemon>/height}"/>
+											</form:fields>
+										</form:FormElement>
+										<form:FormElement label="Weight">
+											<form:fields>
+												<Text text="{modelPokemon>/weight}"/>
+											</form:fields>
+										</form:FormElement>
+										<form:FormElement label="Type">
+											<form:fields>
+												<Text text="{modelPokemon>/types/0/type/name} {modelPokemon>/types/1/type/name}"/>
+											</form:fields>
+										</form:FormElement>
+									</form:formElements>
+								</form:FormContainer>
+							</form:formContainers>
+						</form:Form>
+					</VBox>
+				</l:HorizontalLayout>
+				<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="false" class="sapUiResponsiveContentPadding">
+					<items>
+						<IconTabFilter key="stats" icon="sap-icon://hint" iconColor="Positive">
+							<VBox>
+								<form:Form id="stats" editable="false">
+									<form:layout>
+										<!--<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"-->
+										<!--	emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>-->
+											<form:ResponsiveGridLayout />
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="HP">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/0/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/0/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/0/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Attack">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/1/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/1/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/1/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Defense">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/2/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/2/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/2/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Attack Spe.">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/3/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/3/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/3/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Defense Spe.">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/4/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/4/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/4/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Speed">
+													<form:fields>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/5/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/5/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/5/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</VBox>
+						</IconTabFilter>
+						<IconTabSeparator icon=""/>
+						<IconTabFilter key="attachments" icon="sap-icon://activity-items" iconColor="Neutral">
+							<Table id="Moves" inset="false" items="{path:'modelPokemon>/moves'}">
+								<columns>
+									<Column width="20%">
+										<Text text="Moves"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<ObjectIdentifier title="{modelPokemon>move/name}"/>
+											<!--<Text text="coucou"/>-->
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>

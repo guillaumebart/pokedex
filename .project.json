@@ -6,12 +6,12 @@
   "generation": [
     {
       "templateId": "ui5template.basicSAPUI5ApplicationProjectCommon",
-      "templateVersion": "1.32.0",
+      "templateVersion": "1.98.0",
       "dateTimeStamp": "Tue, 03 Nov 2020 14:54:28 GMT"
     },
     {
       "templateId": "ui5template.basicSAPUI5ApplicationProject",
-      "templateVersion": "1.40.12",
+      "templateVersion": "1.98.0",
       "dateTimeStamp": "Tue, 03 Nov 2020 14:54:29 GMT"
     }
   ],

@@ -16,6 +16,13 @@ function(){
 			if (value > 80){
 				return sap.ui.core.ValueState.Success;
 			}
+		},
+        number: function(value){
+            var sNumber = value.substr(34);
+			return (sNumber.slice(0, -1));			 
+		},
+        uppercase: function(value){
+			return (value.toUpperCase());			 
 		}
 	};
 });

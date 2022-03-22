@@ -1,24 +1,20 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:form="sap.ui.layout.form">
-    <Popover id="myPopover" title="{modelMove>/name}" offsetX="50">
+    <Popover id="myPopover" title="{path: 'modelMove>/name', formatter: '.formatter.uppercase'}" offsetX="50">
         <content>
             <form:SimpleForm editable="false" layout="ResponsiveGridLayout">
                 <form:content>
                     <Label text="Type"/>
-                    <Text text="{modelMove>/type/name}" />
-                    <Label text="Power"/>
-                    <Text text="{modelMove>/power}" />
+                    <Text text="{modelMove>/type/name}"/>
+                    <Label text="Power" visible="{= !${modelMove>/power} === false}"/>
+                    <Text text="{modelMove>/power}" visible="{= !${modelMove>/power} === false}"/>
                     <Label text="PP"/>
                     <Text text="{modelMove>/pp}" />
+                    <Label text="Description"/>
+                    <Text text="{modelMove>/effect_entries/0/short_effect}"/>
                 </form:content>
             </form:SimpleForm>
-            <Text text="Description"/>
-            <List id="moveDescription" items="{path:'modelMove>/effect_entries'}">
-                <items>
-                    <StandardListItem title="{modelMove>short_effect}"/>
-                </items>
-            </List>
         </content>
     </Popover>
 </core:FragmentDefinition>

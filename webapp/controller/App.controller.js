@@ -37,26 +37,31 @@ sap.ui.define([
             });
 
             var aData = oData.responseJSON;
+            for (const element of aData.results) {
+                element.number = formatter.number(element.url);
+            }
             var oPokemonList = new JSONModel(aData);
             this.getView().setModel(oPokemonList, "modelPokemonList");
 
         },
 
         onSearch: function (oEvt) {
-
             // add filter for search
             var aFilters = [];
             var sQuery = oEvt.getSource().getValue();
             if (sQuery && sQuery.length > 0) {
                 var filterName = new Filter("name", sap.ui.model.FilterOperator.Contains, sQuery);
                 aFilters.push(filterName);
-                var filterUrl = new Filter("url", sap.ui.model.FilterOperator.Contains, sQuery);
+                var filterUrl = new Filter("number", sap.ui.model.FilterOperator.Contains, sQuery);
                 aFilters.push(filterUrl);
+                var oFilter = new Filter({
+                    filters: aFilters,
+                    and: false
+                });
+                var aFilter = [];
+                aFilter.push(oFilter);
             }
-            var oFilter = new Filter({filters: aFilters,
-                                      and: false});
-            var aFilter = [];
-            aFilter.push(oFilter);
+
 
             // update list binding
             var list = this.byId("pokemonList");
@@ -93,6 +98,8 @@ sap.ui.define([
 
             var oPokemon = new JSONModel(oData.responseJSON);
             this.getView().setModel(oPokemon, "modelPokemon");
+
+            this.setColoredType(oPokemon);
 
             //evolution
             //get species
@@ -277,10 +284,22 @@ sap.ui.define([
         },
 
         onNodePress: function (oEvent) {
-            if(!oEvent.getParameters().getProperty("focused")){
+            if (!oEvent.getParameters().getProperty("focused")) {
                 var nodeId = oEvent.getParameters().getProperty("nodeId");
                 var url = "https://pokeapi.co/api/v2/pokemon/" + nodeId;
                 this.getPokemon(url);
+            }
+        },
+
+        setColoredType: function (oPokemon) {
+            var typeNumber = 0;
+            for(const element of oPokemon.getData().types){
+                var id = "type" + typeNumber;
+                var oTypeText = this.byId(id);
+                oTypeText.aCustomStyleClasses=[];
+                oTypeText.aCustomStyleClasses.push(element.type.name);
+                // oTypeText.addStyleClass(element.type.name);
+                typeNumber = typeNumber + 1;
             }
         },
 

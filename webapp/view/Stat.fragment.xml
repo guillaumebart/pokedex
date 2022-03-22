@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <VBox>
+        <form:Form id="stats" editable="false">
+            <form:layout>
+                <!--<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"-->
+                <!-- emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>-->
+                <form:ResponsiveGridLayout />
+            </form:layout>
+            <form:formContainers>
+                <form:FormContainer>
+                    <form:formElements>
+                        <form:FormElement label="HP">
+                            <form:fields>
+                                <ProgressIndicator percentValue="{path:'modelPokemon>/stats/0/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/0/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/0/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="Attack">
+                            <form:fields>
+                                <ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/1/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/1/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/1/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="Defense">
+                            <form:fields>
+                                <ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/2/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/2/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/2/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="Attack Spe.">
+                            <form:fields>
+                                <ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/3/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/3/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/3/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="Defense Spe.">
+                            <form:fields>
+                                <ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/4/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/4/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/4/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="Speed">
+                            <form:fields>
+                                <ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{path:'modelPokemon>/stats/5/base_stat', formatter:'.formatter.percentage'}" displayValue="{modelPokemon>/stats/5/base_stat}" showValue="true" state="{path:'modelPokemon>/stats/5/base_stat', formatter:'.formatter.color'}" displayOnly="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                    </form:formElements>
+                </form:FormContainer>
+            </form:formContainers>
+        </form:Form>
+    </VBox>
+</core:FragmentDefinition>

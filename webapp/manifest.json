@@ -7,7 +7,7 @@
 		"applicationVersion": {
 			"version": "1.98.0"
 		},
-		"title": "{{appTitle}}",
+		"title": "Pokédex",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",

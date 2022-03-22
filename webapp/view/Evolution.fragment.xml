@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:suite="sap.suite.ui.commons">
+    <HBox id="evolutionChain"></HBox>
+    <suite:ProcessFlow id="processflow" nodePress="onNodePress" scrollable="false" nodes="{path: 'modelEvolutionChain>/nodes'}" lanes="{path: 'modelEvolutionChain>/lanes'}">
+        <suite:nodes>
+            <suite:ProcessFlowNode laneId="{modelEvolutionChain>lane}" nodeId="{modelEvolutionChain>id}" children="{modelEvolutionChain>children}" focused="{modelEvolutionChain>focused}">
+                <suite:zoomLevelOneContent>
+                    <VBox height="100%" justifyContent="SpaceBetween" renderType="Bare" alignItems= "Center">
+                        <Text text="{path:'modelEvolutionChain>name', formatter:'.formatter.uppercase'}" />
+                        <Image height="9rem" src="{modelEvolutionChain>sprites/front_default}" alt="{modelEvolutionChain>name}" densityAware="false" />
+                    </VBox>
+                </suite:zoomLevelOneContent>
+                <suite:zoomLevelTwoContent>
+                    <VBox height="100%" justifyContent="SpaceBetween" renderType="Bare" alignItems= "Center">
+                        <Text text="{path:'modelEvolutionChain>name', formatter:'.formatter.uppercase'}" />
+                        <Image height="7rem" src="{modelEvolutionChain>sprites/front_default}" alt="{title}" densityAware="false" />
+                    </VBox>
+                </suite:zoomLevelTwoContent>
+                <suite:zoomLevelThreeContent>
+                    <VBox height="100%" justifyContent="SpaceBetween" renderType="Bare" alignItems= "Center">
+                        <Text text="{path:'modelEvolutionChain>name', formatter:'.formatter.uppercase'}" />
+                        <Image height="5rem" src="{modelEvolutionChain>sprites/front_default}" alt="{title}" densityAware="false" />
+                    </VBox>
+                </suite:zoomLevelThreeContent>
+                <suite:zoomLevelFourContent>
+                    <!-- <Text text="{path:'modelEvolutionChain>name', formatter:'.formatter.uppercase'}" /> -->
+                    <Image height="100%" src="{modelEvolutionChain>sprites/front_default}" alt="{title}" densityAware="false" />
+                </suite:zoomLevelFourContent>
+            </suite:ProcessFlowNode>
+        </suite:nodes>
+        <suite:lanes>
+            <suite:ProcessFlowLaneHeader laneId="{modelEvolutionChain>id}" iconSrc="{modelEvolutionChain>icon}" position="{modelEvolutionChain>position}" text="{modelEvolutionChain>text}" />
+        </suite:lanes>
+    </suite:ProcessFlow>
+</core:FragmentDefinition>
